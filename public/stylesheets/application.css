@@ -1,6 +1,14 @@
+@font-face {
+    font-family: 'AllerLightRegular';
+    src: url('http://transition.zhanxz.net/fonts/aller-fontface/aller_lt-webfont.eot');
+    src: local('?'), url('http://transition.zhanxz.net/fonts/aller-fontface/aller_lt-webfont.eot?iefix') format('eot'), url('http://transition.zhanxz.net/fonts/aller-fontface/aller_lt-webfont.woff') format('woff'), url('http://transition.zhanxz.net/fonts/aller-fontface/aller_lt-webfont.ttf') format('truetype'), url('../fonts/aller-fontface/aller_lt-webfont.svg#webfontywfdQTlG') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-  background-color: #4B7399;
-  font-family: Verdana, Helvetica, Arial;
+  background-color: white;
+  font-family: AllerLightRegular;
   font-size: 14px;
 }
 
@@ -19,11 +27,53 @@ a {
 }
 
 #container {
-  width: 75%;
+  width: 90%;
+  min-width: 700px;
+  max-width: 900px;
   margin: 0 auto;
-  background-color: #FFF;
-  padding: 20px 40px;
-  border: solid 1px black;
+  /*background-color: #FFF;*/
+  /*border: solid 1px black;*/
+  margin-top: 20px;
+}
+
+#content {
+  background-color: #F5F5DC;
+  border-radius: 10px;
+  color: #4C4C4B;
+  float:right;
+  width: 73%
+}
+
+#side-nav {
+  background-color: purple;
+  border-radius: 10px;
+  color: white;
+  float: left;
+  /*font-weight: bold;*/
+  width: 25%;
+}
+#side-nav ul {
+  list-style-type: none;
+}
+#side-nav li {
+  text-align: right;
+}
+#side-nav a:hover {
+  background-color: violet;
+  border-radius: 5px;
+}
+#side-nav a {
+  display: block;
+  padding-right: 5px;
+}
+
+.wrapper {
+  width: 90%;
+  min-width: 700px;
+  max-width: 900px;
+  margin: 0 auto;
+  /*background-color: #FFF;*/
+  /*border: solid 1px black;*/
   margin-top: 20px;
 }
 

@@ -1,19 +1,63 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "MedPass" %></title>
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag :defaults %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>
   <body>
-    <div id="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      <%= content_tag :h1, yield(:title) if show_title? %>
-      <%= yield %>
+    <div class="wrapper" style="background-color:lightgray;border-radius:3px;margin-top: 5px;">
+      <div style="padding: 4px; text-align:center;">
+        You are currently not logged in.  &#8594;<a href="#login">Login</a>
+      </div>
     </div>
+    <header id="header" class="wrapper">
+      <hgroup>
+				<h1 style="color:teal; margin:0; padding:0; font-size: 300%">T<span style="color:orange;font-size:110%;">R<sub>x</sub></span>ANSITION</h1>
+        <h2 style="color:#4C4C4B; margin:0; padding:0;">Take control of your health and your life</h2>
+			</hgroup>	
+      <div class="clear"></div>
+      <nav style="display:none;">  
+        <ul> 
+					<li><a class="active" href="/">Study</a></li> 
+					<li><a href="/passport.php">Medical Passport™</a></li> 
+					<li><a href="/challenge.php">Kidney Challenge</a></li> 
+					<li><a href="/providertools.php">Tools for Providers</a></li> 
+				</ul>
+      </nav>
+    </header>
+    <div id="container">
+      <div id="flash">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
+      </div>
+      <%= content_tag :h1, yield(:title) if show_title? %>
+      <div id="content">
+        <div style="padding: 20px;">
+          <%= yield %>
+        </div>
+      </div>
+      <nav id="side-nav">
+        <ul style="font-size:18px; margin: 5px 20px; line-height: 150%; padding-left:0px"> 
+					<li><a class="active" href="/" style="color:white; text-decoration:none;">Home</a></li>
+          <li><a href="/about" style="color:white; text-decoration:none;">About</a></li> 
+          <li><a href="/contact" style="color:white; text-decoration:none;">Information</a></li>
+          <li><a href="#" style="color:white; text-decoration:none;">Members</a></li> 
+          <li><a href="#" style="color:white; text-decoration:none;">Programs</a></li> 
+					<li><a href="/passport" style="color:white; text-decoration:none;">Medical Passport&trade;
+          </a></li> 
+					<li><a href="#" style="color:white; text-decoration:none;">Games</a></li> 
+					<li><a href="#" style="color:white; text-decoration:none;">Tools for Providers</a></li> 
+				</ul>
+      </nav>
+      <div class="clear"></div>
+    </div>
+    <footer id="footer" class="wrapper" style="text-align:center;">
+      <p>Copyright &copy; 2010-2011 - All Rights Reserved | <a href="#">Privacy Policy</a></p> 
+      <p>All information is confidential.  Do not share information, except with authorized individuals.</p> 
+    </footer>
   </body>
 </html>
