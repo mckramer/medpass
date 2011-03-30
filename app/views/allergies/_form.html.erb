@@ -1,0 +1,25 @@
+<%= form_for(@allergy) do |f| %>
+  <% if @allergy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@allergy.errors.count, "error") %> prohibited this allergy from being saved:</h2>
+
+      <ul>
+      <% @allergy.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </div>
+  <div class="field">
+    <%= f.label :allergen %><br />
+    <%= f.text_field :allergen %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
