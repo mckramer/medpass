@@ -1,0 +1,29 @@
+es:
+  title: 'T<span class="prescription">R<sub>X</sub></span>ANSITION'
+  motto: 'Toma el control de su salud y su vida'
+  page:
+    home:
+      title: 'El sistema de TRxANSITION'
+      title_html: 'El sistema de TR<sub>X</sub>ANSITION'
+      intro: 'Introducción'
+      intro_response: 'El programa se inició en la Universidad de Carolina del Norte en Chapel Hill.'
+      design: '¿Quién fue diseñado para?'
+      design_response: 'El estudio es para las edades de los pacientes 12-22.'
+      goals: '¿Cuáles son las metas para los participantes?'
+      goals_response: 'Enseña y educa a los pacientes sobre sus condiciones por lo que será capaz de asumir la responsabilidad primordial de medicación y el mantenimiento de su salud.'
+      joining: '¿Cómo puedo participar en el estudio?'
+      joining_response: 'Este estudio está abierto sólo a las instituciones específicas.'
+      joining_patient: 'If you are a patient and think you would benefit from this program, please talk to your primary health provider and encourage them to get in touch with us.'
+      joining_provider: 'If you are a health provider, please go to the Provider information page for more information regarding bringing the TRxANSITION program to your institution.'
+    about:
+      title: 'Sobre el sistema'
+    contact:
+      title: 'Contacto'
+  nav:
+    main:
+      home: 'Principal'
+      about: 'Sobre'
+      games: 'Juegos'
+      info: 'Información'
+      members: 'Miembros'
+      programs: 'Programas'

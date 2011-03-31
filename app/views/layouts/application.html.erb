@@ -2,21 +2,38 @@
 <html>
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "MedPass" %></title>
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <meta name="description" content="Teach and educate patients about their conditions so they will be able to take primary responsibility for medicating and maintaining their health." />
+    <meta name="keywords" content="Transition, Medical Passport, Med Pass, MedPass" />
+    <meta name="author" content="Max Kramer" />
+    <meta charset="utf-8" />
+    <%= csrf_meta_tag %>
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag :defaults %>
-    <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>
   <body>
     <div class="wrapper" style="background-color:lightgray;border-radius:3px;margin-top: 5px;">
       <div style="padding: 4px; text-align:center;">
-        You are currently not logged in.  &#8594;<a href="#login">Login</a>
+        <% if user_signed_in? %>
+          <%= current_user.name %> | <%= link_to('Edit account', edit_user_registration_path) %> | <%= link_to('Logout', destroy_user_session_path) %>
+        <% else %>
+          You are currently not logged in. &#8594;<%= link_to('Login', new_user_session_path) %>  or <%= link_to('Register', new_user_registration_path) %>
+        <% end %>
       </div>
     </div>
     <header id="header" class="wrapper">
+      <div style="float:right; background-color:#F5F5DC; border-radius:3px; padding:4px;">
+        &rarr;
+        <% if (I18n.locale.to_s == 'es' || params[:locale] == 'es') %>
+          <a href="?locale=en">in English</a>
+        <% else %>
+          <a href="?locale=es">en Español</a>
+        <% end %>
+      </div>
       <hgroup>
-				<h1 style="color:teal; margin:0; padding:0; font-size: 300%">T<span style="color:orange;font-size:110%;">R<sub>x</sub></span>ANSITION</h1>
-        <h2 style="color:#4C4C4B; margin:0; padding:0;">Take control of your health and your life</h2>
+				<h1 style="color:teal; margin:0; padding:0; font-size: 250%">T<span style="color:orange;font-size:110%;">R<sub>x</sub></span>ANSITION</h1>
+        <h2 style="color:#4C4C4B; margin:0; padding:0;"><%= t 'motto' %></h2>
 			</hgroup>	
       <div class="clear"></div>
       <nav style="display:none;">  
@@ -29,28 +46,27 @@
       </nav>
     </header>
     <div id="container">
-      <div id="flash">
-        <% flash.each do |name, msg| %>
-          <%= content_tag :div, msg, :id => "flash_#{name}" %>
-        <% end %>
-      </div>
       <%= content_tag :h1, yield(:title) if show_title? %>
       <div id="content">
         <div style="padding: 20px;">
+          <div id="flash">
+            <% flash.each do |name, msg| %>
+              <%= content_tag :div, msg, :id => "flash_#{name}" %>
+            <% end %>
+          </div>
           <%= yield %>
         </div>
       </div>
       <nav id="side-nav">
         <ul style="font-size:18px; margin: 5px 20px; line-height: 150%; padding-left:0px"> 
-					<li><a class="active" href="/" style="color:white; text-decoration:none;">Home</a></li>
-          <li><a href="/about" style="color:white; text-decoration:none;">About</a></li> 
-          <li><a href="/contact" style="color:white; text-decoration:none;">Information</a></li>
-          <li><a href="#" style="color:white; text-decoration:none;">Members</a></li> 
-          <li><a href="#" style="color:white; text-decoration:none;">Programs</a></li> 
+					<li><a class="active" href="/" style="color:white; text-decoration:none;"><%= t 'nav.main.home' %></a></li>
+          <li><a href="/about" style="color:white; text-decoration:none;"><%= t 'nav.main.about' %></a></li> 
+          <li><a href="/contact" style="color:white; text-decoration:none;"><%= t 'nav.main.info' %></a></li>
+          <li><a href="#" style="color:white; text-decoration:none;"><%= t 'nav.main.members' %></a></li> 
+          <li><a href="#" style="color:white; text-decoration:none;"><%= t 'nav.main.programs' %></a></li> 
 					<li><a href="/passport" style="color:white; text-decoration:none;">Medical Passport&trade;
           </a></li> 
-					<li><a href="#" style="color:white; text-decoration:none;">Games</a></li> 
-					<li><a href="#" style="color:white; text-decoration:none;">Tools for Providers</a></li> 
+					<li><a href="#" style="color:white; text-decoration:none;"><%= t 'nav.main.games' %></a></li> 
 				</ul>
       </nav>
       <div class="clear"></div>

@@ -1,5 +1,37 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  attributes:
+    created_at: 'Created at'
+    updated_at: 'Updated at'
+    username: 'Username'
+    email: 'Email address'
+    password: 'Password'
+    
+  title: 'T<span class="prescription">R<sub>X</sub></span>ANSITION'
+  motto: 'Take control of your health and your life'
+  
+  page:
+    home:
+      title: 'The TRxANSITION system'
+      title_html: 'The TR<sub>X</sub>ANSITION system'
+      intro: 'Introduction'
+      intro_response: 'The program was started at the University of North Carolina at Chapel Hill.'
+      design: 'Who was it designed for?'
+      design_response: 'The study was designed for patients ages 12-22.'
+      goals: 'What are the goals for the participants?'
+      goals_response: 'Teach and educate patients about their conditions so they will be able to take primary responsibility for medicating and maintaining their health.'
+      joining: 'How do I join the study?'
+      joining_response: 'This study is roled out to specific insitutions.'
+      joining_patient: 'If you are a patient and think you would benefit from this program, please talk to your primary health provider and encourage them to get in touch with us.'
+      joining_provider: 'If you are a health provider, please go to the Provider information page for more information regarding bringing the TRxANSITION program to your institution.'
+    about:
+      title: 'About the system'
+    contact:
+      title: 'Contact'
+  nav:
+    main:
+      home: 'Home'
+      about: 'About'
+      games: 'Games'
+      info: 'Information'
+      members: 'Members'
+      programs: 'Programs'
