@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110330195139) do
+ActiveRecord::Schema.define(:version => 20110404020104) do
 
   create_table "allergens", :force => true do |t|
     t.string   "name"
@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(:version => 20110330195139) do
     t.datetime "updated_at"
   end
 
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
@@ -51,6 +62,11 @@ ActiveRecord::Schema.define(:version => 20110330195139) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "language"
+    t.string   "name_first"
+    t.string   "name_last"
+    t.string   "name_suffix"
+    t.string   "name_middle"
+    t.string   "type"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

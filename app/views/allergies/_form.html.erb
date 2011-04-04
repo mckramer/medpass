@@ -13,11 +13,16 @@
 
   <div class="field">
     <%= f.label :user %><br />
-    <%= f.text_field :user %>
+    <% if @user == nil %>
+      <%= collection_select(:allergy, :user, @users, :id, :name, :prompt => true) %><br />
+    <% else %>
+      <%= f.hidden_field :user, :value => @user.id %>
+      <%= link_to @user.name_first, users_path %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :allergen %><br />
-    <%= f.text_field :allergen %>
+    <%= collection_select(:allergy, :allergen, Allergen.all, :id, :name, :prompt => true) %><br />
   </div>
   <div class="actions">
     <%= f.submit %>

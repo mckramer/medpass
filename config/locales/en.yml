@@ -5,6 +5,16 @@ en:
     username: 'Username'
     email: 'Email address'
     password: 'Password'
+    password: 'Confirm password'
+    name_full: 'Name (First MI Last, Suffix)'
+    name_first: 'First name'
+    name_middle: 'Middle initial'
+    name_last: 'Last name'
+    name_suffix: 'Suffix'
+    language: 'Language'
+    name: 'Name'
+    abbr: 'Abbreviation'
+    description: 'Description'
     
   title: 'T<span class="prescription">R<sub>X</sub></span>ANSITION'
   motto: 'Take control of your health and your life'
@@ -35,3 +45,29 @@ en:
       info: 'Information'
       members: 'Members'
       programs: 'Programs'
+    next: 'Next'
+    previous: 'Previous'
+    forward: 'Forward'
+    back: 'Back'
+  shared:
+    and: 'and'
+    or: 'or'
+    new: 'New'
+    create: 'Create'
+    edit: 'Edit'
+    update: 'Update'
+    destroy: 'Delete'
+    
+  allergen:
+    name: 'Allergen'
+    description_html: 'An <em>allergen</em> is a nonparasitic antigen capable of stimulating a type-I hypersensitivity reaction in atopic individuals.'
+  allergy: 
+    name: 'Allergy'
+  condition:
+    name: 'Condition'
+    description_html: 'A disease is an abnormal condition affecting the body of an organism. It is often construed to be a medical condition associated with specific symptoms and signs. It may be caused by external factors, such as infectious disease, or it may be caused by internal dysfunctions, such as autoimmune diseases.'
+  drug:
+    name: 'Drug'
+    description_html: 'Any chemical substance intended for use in the medical diagnosis, cure, treatment, or prevention of disease.'
+  
+  

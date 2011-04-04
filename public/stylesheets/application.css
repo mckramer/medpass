@@ -140,25 +140,27 @@ label {
 
 }
 
-input {
+input,
+select,
+textarea {
   color: inherit;
   font-family: inherit;
   font-size: 115%;
   border-radius: 5px;
   /*outline: none;*/
 }
-
-input:focus {
+input:focus,
+textarea:focus {
   border-color: gold;
 }
-
 input[type=text],
-input[type=password] {
+input[type=password],
+textarea {
   background-color: white;
   box-shadow: inset 0 0 2px #4C4C4B;
   padding: 4px;
+  min-width: 344px;
 }
-
 input[type=submit] {
   background-color: purple;
   color: white;
@@ -168,4 +170,65 @@ input[type=submit]:hover,
 input[type=submit]:focus {
   background-color: indigo;
   cursor: pointer;
+}
+
+select {
+  background-color: white;
+  box-shadow: inset 0 0 2px #4C4C4B;
+  line-height: 125%;
+  min-width: 350px;
+  padding-left: 2px;
+}
+option {
+  padding: 4px;
+}
+textarea {
+
+}
+
+#user_name_first {
+  width: 150px !important;
+  min-width: 150px;
+}
+#user_name_last {
+  width: 175px !important;
+  min-width: 175px;
+}
+#user_name_middle {
+  width: 30px !important;
+  min-width: 30px;
+}
+#user_name_suffix {
+  width: 75px !important;
+  min-width: 75px;
+}
+
+.sortable {
+  border-collapse: collapse;
+  border-spacing: 0px;
+  width:100%;
+}
+.sortable td, .sortable th {
+  border: 2px solid white;
+  vertical-align:middle;
+}
+.sortable thead {background: skyblue;}
+.sortable thead th {
+  font-size: 110%;
+  padding: 8px 4px;
+}
+.sortable .odd {background: azure;}
+.sortable .even {background: snow;}
+.sortable tr:hover {background: skyblue;}
+.sortable td {
+  padding: 2px; 
+  text-align: center;
+}
+.sortable a, .sortable a:link {
+  text-decoration: none;
+  display: block;
+}
+.sortable a:hover {
+  background: #369;
+  color: white;
 }

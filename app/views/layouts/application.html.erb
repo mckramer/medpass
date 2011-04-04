@@ -18,7 +18,7 @@
         <% if user_signed_in? %>
           <%= current_user.name %> | <%= link_to('Edit account', edit_user_registration_path) %> | <%= link_to('Logout', destroy_user_session_path) %>
         <% else %>
-          You are currently not logged in. &#8594;<%= link_to('Login', new_user_session_path) %>  or <%= link_to('Register', new_user_registration_path) %>
+          <%= t 'devise.shared.not_signed_in' %> &#8594;<%= link_to(t('devise.shared.signin'), new_user_session_path) %> <%= t 'shared.or' %> <%= link_to(t('devise.shared.signup'), new_user_registration_path) %>
         <% end %>
       </div>
     </div>

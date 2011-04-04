@@ -42,4 +42,7 @@ en:
     shared:
       signin: 'Sign in'
       signup: 'Sign up'
+      signout: 'Sign out'
       forgotten_password: 'Forgot your password?'
+      not_signed_in: 'You are currently not signed in.'
+      edit_registration: 'Edit account'

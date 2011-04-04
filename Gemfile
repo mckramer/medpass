@@ -10,6 +10,7 @@ gem 'sqlite3'
 # Authorization
 gem 'devise'
 # gem 'omniauth'
+gem 'cancan'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -38,4 +39,5 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'webrat'
+  # gem 'cucumber'
 end

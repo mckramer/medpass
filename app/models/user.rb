@@ -1,5 +1,10 @@
 class User < ActiveRecord::Base
 
+  has_and_belongs_to_many :roles
+  
+  # belongs_to :institution
+  # belongs_to :division
+  
   # has_one :emergency_contact
   
   has_many :allergies
@@ -17,8 +22,29 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :language
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :language, :name_first, :name_last, :name_middle, :name_suffix
+  
+  validates :name_first,   
+            :presence => true,   
+            :length => { :within => 1..30 }
+            
+    validates :name_middle,
+            :length => { :maximum => 1 }
+  
+  validates :name_last,   
+            :presence => true,   
+            :length => { :within => 1..30 }
+            
+  validates :email,   
+            :presence => true,   
+            :uniqueness => true,
+            :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
+            
+  validates :password,   
+            :presence => true,   
+            :length => { :within => 8..36 },
+            :exclusion => { :in => %w( password 1qaz2wsx 12345678 123456789 ) }
 end

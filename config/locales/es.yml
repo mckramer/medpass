@@ -1,4 +1,21 @@
 es:
+  attributes:
+    created_at: 'Crear at'
+    updated_at: 'Cambiar at'
+    username: 'Usario'
+    email: 'Correo electrónico'
+    password: 'Contraseña'
+    password_confirmation: 'Confirmación de la contraseña'
+    name_full: 'Nombre (Nombre MI Apellido, Sufijo)'
+    name_first: 'Nombre'
+    name_middle: 'MI'
+    name_last: 'Apellido'
+    name_suffix: 'Sufijo'
+    language: 'Idioma'
+    name: 'Nombre'
+    abbr: 'Abbreviación'
+    description: 'Descripción'
+
   title: 'T<span class="prescription">R<sub>X</sub></span>ANSITION'
   motto: 'Toma el control de su salud y su vida'
   page:
@@ -27,3 +44,6 @@ es:
       info: 'Información'
       members: 'Miembros'
       programs: 'Programas'
+  shared:
+    and: 'y'
+    or: 'o'

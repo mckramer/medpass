@@ -25,6 +25,15 @@ class AllergiesController < ApplicationController
   # GET /allergies/new.xml
   def new
     @allergy = Allergy.new
+    if params[:user]
+      @user = User.find_by_id(Integer(params[:user]))
+      if @user == nil
+        @users = User.all
+        flash[:message] = "Invalid user specified; user does not exist.  Please select user from the list below."
+      end
+    else
+      @users = User.all
+    end
 
     respond_to do |format|
       format.html # new.html.erb

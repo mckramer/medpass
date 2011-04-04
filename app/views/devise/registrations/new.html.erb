@@ -2,15 +2,65 @@
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
+  
+  <fieldset>
+    <legend>User type and roles</legend>
+     <p>
+      <%= f.label :type %>
+      <% @types = [ 'participant', 'provider' ] %>
+      <% @types.each do |type| %>
+        <br><%= radio_button_tag :type, type, @type == type, :name => "user[type]", :id => "user_type_" + type %>
+        <label for="user_type_<%= type %>"><%= type.humanize %></label>
+      <% end %>
+    </p>
+    <p>
+      <label for="roles[]">Role(s)</label>
+      <% @roles = Role.all %>
+      <% @roles.each do |role| %>
+        <br><%= check_box_tag 'user[role_ids][]', role.id, false, :id => "user_roles_" + role.name %>
+        <label for="user_roles_<%= role.name %>"><%= role.name.humanize %></label>
+      <% end %>
+    </p>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Group</legend>
+    <p>
+      <label for="user_site">Site</label><br>
+      <select id="user_site" name="user[site]">
+        <option value="0">None selected</option>
+        <option value="1">University of North Carolina at Chapel Hill</option>
+        <option value="2">Ohio State University</option>
+      </select>
+    </p>
+    <p>
+      <label for="user_division">Division</label><br>
+      <select id="user_division" name="user[division]">
+        <option value="0">None selected</option>
+        <option value="1">Kidney</option>
+        <option value="2">Gastro Intestinal</option>
+      </select>
+    </p>
+  </fieldset>
+  
   <p><%= f.label :email %><br />
-  <%= f.text_field :email %></p>
+  <%= f.text_field :email, :placeholder => t('attributes.email') %></p>
+  
+  <p><%= t('attributes.name') %><br />
+  <%= f.text_field :name_first, :placeholder => t('attributes.name_first') %><%= f.text_field :name_middle, :placeholder => "MI", :maxlength => 1 %><%= f.text_field :name_last, :placeholder => t('attributes.name_last') %><%= f.text_field :name_suffix, :placeholder => t('attributes.name_suffix') %></p>
+  
+  <p><%= f.label :language %><br />
+  <% if I18n.locale.to_s == 'en' %>
+    <%= f.select :language, [['English', 'en'], ['Spanish - Español', 'es']] %></p>
+  <% else %>
+    <%= f.select :language, [['Español - Spanish', 'es'], ['Inglés - English', 'en']] %></p>
+  <% end %>
 
   <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+  <%= f.password_field :password, :placeholder => t('attributes.password') %></p>
 
   <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+  <%= f.password_field :password_confirmation, :placeholder => t('attributes.password') %></p>
 
   <p><%= f.submit t('devise.registrations.button_new') %></p>
 <% end %>

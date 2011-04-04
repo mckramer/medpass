@@ -1,25 +1,26 @@
-<h1>Listing allergens</h1>
+<h2>Allergens</h2>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Abbr</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @allergens.each do |allergen| %>
-  <tr>
-    <td><%= allergen.name %></td>
-    <td><%= allergen.abbr %></td>
-    <td><%= allergen.description %></td>
-    <td><%= link_to 'Show', allergen %></td>
-    <td><%= link_to 'Edit', edit_allergen_path(allergen) %></td>
-    <td><%= link_to 'Destroy', allergen, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+<table class="sortable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Abbr</th>
+      <th colspan="3">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @allergens.each do |allergen, n| %>
+    <tr class="<%= cycle('even', 'odd') %>">
+      <td><%= allergen.name %></td>
+      <td><%= allergen.abbr %></td>
+      <td><%= link_to 'Show', allergen %></td>
+      <td><%= link_to 'Edit', edit_allergen_path(allergen) %></td>
+      <td><%= link_to 'Destroy', allergen, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+  </tfoot>
 </table>
 
 <br />
