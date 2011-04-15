@@ -51,9 +51,9 @@
   
   <p><%= f.label :language %><br />
   <% if I18n.locale.to_s == 'en' %>
-    <%= f.select :language, [['English', 'en'], ['Spanish - Español', 'es']] %></p>
+    <%= f.select :language, [['English', 'en'], ['Spanish', 'es']] %></p>
   <% else %>
-    <%= f.select :language, [['Español - Spanish', 'es'], ['Inglés - English', 'en']] %></p>
+    <%= f.select :language, [['Español', 'es'], ['Inglés', 'en']] %></p>
   <% end %>
 
   <p><%= f.label :password %><br />

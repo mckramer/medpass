@@ -1,0 +1,27 @@
+<h1>Listing indications</h1>
+
+<table>
+  <tr>
+    <th>Text</th>
+    <th>Description</th>
+    <th>Drug</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @indications.each do |indication| %>
+  <tr>
+    <td><%= indication.text %></td>
+    <td><%= indication.description %></td>
+    <td><%= indication.drug %></td>
+    <td><%= link_to 'Show', indication %></td>
+    <td><%= link_to 'Edit', edit_indication_path(indication) %></td>
+    <td><%= link_to 'Destroy', indication, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Indication', new_indication_path %>

@@ -6,7 +6,7 @@ en:
     email: 'Email address'
     password: 'Password'
     password: 'Confirm password'
-    name_full: 'Name (First MI Last, Suffix)'
+    name_full: 'Name (First, Middle initial, Last, Suffix)'
     name_first: 'First name'
     name_middle: 'Middle initial'
     name_last: 'Last name'

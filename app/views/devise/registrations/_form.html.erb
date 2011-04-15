@@ -1,0 +1,18 @@
+  <p><%= f.label :email %><br />
+  <%= f.text_field :email, :placeholder => t('attributes.email') %></p>
+  
+  <p><%= t('attributes.name') %><br />
+  <%= f.text_field :name_first, :placeholder => t('attributes.name_first') %><%= f.text_field :name_middle, :placeholder => "MI", :maxlength => 1 %><%= f.text_field :name_last, :placeholder => t('attributes.name_last') %><%= f.text_field :name_suffix, :placeholder => t('attributes.name_suffix') %></p>
+  
+  <p><%= f.label :language %><br />
+  <% if I18n.locale.to_s == 'en' %>
+    <%= f.select :language, [['English', 'en'], ['Spanish', 'es']] %></p>
+  <% else %>
+    <%= f.select :language, [['Español', 'es'], ['Inglés', 'en']] %></p>
+  <% end %>
+
+  <p><%= f.label :password %><br />
+  <%= f.password_field :password, :placeholder => t('attributes.password') %></p>
+
+  <p><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation, :placeholder => t('attributes.password') %></p>

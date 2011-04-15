@@ -1,4 +1,8 @@
 Medpass::Application.routes.draw do
+  resources :indications
+
+  resources :drugs
+
   resources :roles
 
   resources :allergies

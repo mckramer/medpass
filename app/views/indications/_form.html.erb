@@ -1,0 +1,29 @@
+<%= form_for(@indication) do |f| %>
+  <% if @indication.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@indication.errors.count, "error") %> prohibited this indication from being saved:</h2>
+
+      <ul>
+      <% @indication.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_field :text %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :drug %><br />
+    <%= f.text_field :drug %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

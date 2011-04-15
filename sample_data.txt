@@ -1,0 +1,5 @@
+# Generic drugs 
+@generics = ['Albuterol', 'Alendronate', 'Amitriptyline', 'Amoxicillin', 'Atenolol', 'Baclofen', 'Benazepril', 'Bumetanide', 'Buspirone', 'Cephalexin', 'Chlorpropamide', 'Cimetidine', 'Ciprofloxacin', 'Citalopram', 'Clonidine', 'Cyclobenzaprine', 'Dexamethasone', 'Diclofenac', 'Dicyclomine', 'Diltiazem', 'Doxazosin', 'Doxepin Hcl', 'Doxycycline Hyclate', 'Enalapril', 'Estradiol', 'Estropipate', 'Famotidine', 'Fluocinonide', 'Fluoxetine', 'Folic Acid', 'Furosemide', 'Gentamicin', 'Glimepiride', 'Glipizide', 'Glyburide', 'Haloperidol', 'Hydralazine', 'Hydrochlorothiazide', 'Hydrocortisone', 'Ibuprofen', 'Indapamide', 'Isoniazid', 'Lactulose', 'Levothyroxine', 'Loratadine', 'Lovastatin', 'Magnesium Oxide', 'Medroxyprogesterone', 'Megestrol', 'Meloxicam', 'Metformin', 'Methyldopa', 'Methylprednisolone', 'Naproxen', 'Nortriptyline', 'Nystatin', 'Oxybutynin', 'Penicillin', 'Phenazopyridine', 'Pilocarpine', 'Potassium Chloride', 'Pravastatin', 'Prednisone', 'Prochlorperazine', 'Promethazine', 'Ranitidine', 'Spironolactone']
+
+# Brand name drugs
+@brands = []

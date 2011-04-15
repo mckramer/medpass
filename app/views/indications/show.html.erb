@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Text:</b>
+  <%= @indication.text %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @indication.description %>
+</p>
+
+<p>
+  <b>Drug:</b>
+  <%= @indication.drug %>
+</p>
+
+
+<%= link_to 'Edit', edit_indication_path(@indication) %> |
+<%= link_to 'Back', indications_path %>

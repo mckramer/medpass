@@ -4,13 +4,23 @@
   <%= devise_error_messages! %>
 
   <p><%= f.label :email %><br />
-  <%= f.text_field :email %></p>
+  <%= f.text_field :email, :placeholder => t('attributes.email') %></p>
+  
+  <p><%= t('attributes.name') %><br />
+  <%= f.text_field :name_first, :placeholder => t('attributes.name_first') %><%= f.text_field :name_middle, :placeholder => "MI", :maxlength => 1 %><%= f.text_field :name_last, :placeholder => t('attributes.name_last') %><%= f.text_field :name_suffix, :placeholder => t('attributes.name_suffix') %></p>
+  
+  <p><%= f.label :language %><br />
+  <% if I18n.locale.to_s == 'en' %>
+    <%= f.select :language, [['English', 'en'], ['Spanish - Español', 'es']] %></p>
+  <% else %>
+    <%= f.select :language, [['Español - Spanish', 'es'], ['Inglés - English', 'en']] %></p>
+  <% end %>
 
-  <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></p>
+  <p><%= f.label :password %><br />
+  <%= f.password_field :password, :placeholder => t('attributes.password') %></p>
 
   <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+  <%= f.password_field :password_confirmation, :placeholder => t('attributes.password') %></p>
 
   <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
   <%= f.password_field :current_password %></p>
