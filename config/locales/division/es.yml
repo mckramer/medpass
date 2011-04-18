@@ -1,0 +1,6 @@
+es:
+  division:
+    attributes:
+      name: 'nombre'
+      abbr: 'abbreviacion'
+      site: 'ciudad'

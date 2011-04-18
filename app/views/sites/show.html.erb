@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Image:</b>
+  #TODO
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @site.name %>
+</p>
+
+<p>
+  <b>Abbr:</b>
+  <%= @site.abbr %>
+</p>
+
+<p>
+  <b>Providers for site:</b>
+  <table class="sortable">
+    <thead>
+      <tr>
+        <th>Division</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% count = User.count(:group => :division_id, :conditions => {:site_id => @site.id}) %>
+    <% current_division = nil %>
+    <% row_style = "even" %>
+    <% User.where(:site_id => @site.id).order(:division_id).each do |user| %>
+      <% if current_division.nil? || current_division != user.division_id %>
+        <% current_division = user.division_id %>
+        <% if row_style == "even" %>
+          <% row_style = "odd" %>
+        <% else %>
+          <% row_style = "even" %>
+        <% end %>
+      <tr class="<%= row_style %>">
+        <td rowspan="<%= count[current_division] %>" style="border-color: gray;"><%= user.division.name %></td>
+        <td style="border-color: gray;"><%= user.name %></td>
+      <% else %>
+      <tr class="<%= row_style %>">
+        <td style="border-color: gray;"><%= user.name %></td>
+      <% end %>
+        
+      </tr>
+    <% end %>
+    </tbody>
+    <tfoot>
+    </tfoot>
+  </table>
+</p>
+
+
+<%= link_to 'Edit', edit_site_path(@site) %> |
+<%= link_to 'Back', sites_path %>

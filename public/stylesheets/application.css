@@ -142,7 +142,8 @@ label {
 
 input,
 select,
-textarea {
+textarea,
+.button {
   color: inherit;
   font-family: inherit;
   font-size: 115%;
@@ -161,13 +162,15 @@ textarea {
   padding: 4px;
   min-width: 344px;
 }
-input[type=submit] {
+input[type=submit],
+.button {
   background-color: purple;
-  color: white;
+  color: white !important;
   padding: 5px 15px;
 }
 input[type=submit]:hover,
-input[type=submit]:focus {
+input[type=submit]:focus,
+.button:hover {
   background-color: indigo;
   cursor: pointer;
 }
@@ -179,11 +182,21 @@ select {
   min-width: 350px;
   padding-left: 2px;
 }
+select[disabled] {
+  background-color: #eee;
+}
 option {
   padding: 4px;
 }
 textarea {
 
+}
+
+.button {
+  border: 2px outset buttonface;
+}
+.button:hover {
+  text-decoration: none;
 }
 
 #user_name_first {
@@ -221,10 +234,10 @@ textarea {
 .sortable .even {background: snow;}
 .sortable tr:hover {background: skyblue;}
 .sortable td {
-  padding: 2px; 
+  padding: 2px;
   text-align: center;
 }
-.sortable a, .sortable a:link {
+.sortable a, .sortable a:link, .sortable a:visited {
   text-decoration: none;
   display: block;
 }

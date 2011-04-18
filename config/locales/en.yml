@@ -5,7 +5,7 @@ en:
     username: 'Username'
     email: 'Email address'
     password: 'Password'
-    password: 'Confirm password'
+    password_confirmation: 'Confirm password'
     name_full: 'Name (First, Middle initial, Last, Suffix)'
     name_first: 'First name'
     name_middle: 'Middle initial'

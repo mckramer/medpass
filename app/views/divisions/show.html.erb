@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b><%= t('division.attributes.name').capitalize %>:</b>
+  <%= @division.name %>
+</p>
+
+<p>
+  <b><%= t('division.attributes.abbr').capitalize %>:</b>
+  <%= @division.abbr %>
+</p>
+
+<p>
+  <b><%= t('division.attributes.site').capitalize %>:</b>
+  <%= link_to @division.site.name, @division.site %>
+</p>
+
+
+<%= link_to 'Edit', edit_division_path(@division) %> |
+<%= link_to 'Back', divisions_path %>

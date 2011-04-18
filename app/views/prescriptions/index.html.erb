@@ -1,0 +1,31 @@
+<h1>Listing prescriptions</h1>
+
+<table class="sortable">
+  <thead>
+    <tr>
+      <th>Participant</th>
+      <th>Drug</th>
+      <th>Date prescribed</th>
+      <th>Date archived</th>
+      <th colspan="3">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @prescriptions.each do |prescription| %>
+    <tr class="<%= cycle('even', 'odd') %>">
+      <td><%= link_to prescription.user.name, prescription.user %></td>
+      <td><%= link_to prescription.drug.name, prescription.drug %></td>
+      <td><%= l(prescription.prescribed_at, :format => :short) %></td>
+      <td><% if !prescription.archived_at.nil? %><%= l(prescription.archived_at, :format => :short) %><% end %></td>
+      <td><%= link_to 'Show', prescription %></td>
+      <td><%= link_to 'Edit', edit_prescription_path(prescription) %></td>
+      <td><%= link_to 'Destroy', prescription, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+  <tfoot></tfoot>
+</table>
+
+<br />
+
+<%= link_to 'New Prescription', new_prescription_path %>

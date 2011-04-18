@@ -1,15 +1,22 @@
 Medpass::Application.routes.draw do
+  resources :prescriptions
+  resources :dosages
+  resources :divisions
+  resources :sites
   resources :indications
-
   resources :drugs
-
   resources :roles
-
   resources :allergies
   resources :allergens
   resources :conditions
 
   devise_for :users
+  
+  match "/user" => "Users#show_self"
+  match "/participants/:id" => "Users#show"
+  match "/providers/:id" => "Users#show"
+  resources :users
+  
 
   match 'about' => 'page#about'
   match 'contact' => 'page#contact'

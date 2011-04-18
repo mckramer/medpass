@@ -1,0 +1,29 @@
+<h2>Users</h2>
+
+<table class="sortable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Roles</th>
+      <th>Site</th>
+      <th>Division</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user, n| %>
+    <tr class="<%= cycle('even', 'odd') %>">
+      <td><%= user.name %></td>
+      <td><%= user.type %></td>
+      <td><%= user.site.abbr %></td>
+      <td><%= user.division.name %></td>
+    </tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>
+
+<br />
+
+<%= link_to 'New User', new_user_path %>

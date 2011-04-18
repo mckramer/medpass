@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110404183819) do
+ActiveRecord::Schema.define(:version => 20110417220008) do
 
   create_table "allergens", :force => true do |t|
     t.string   "name"
@@ -27,11 +27,33 @@ ActiveRecord::Schema.define(:version => 20110404183819) do
     t.datetime "updated_at"
   end
 
+  add_index "allergies", ["user_id", "allergen_id"], :name => "index_allergies_on_user_id_and_allergen_id", :unique => true
+
   create_table "conditions", :force => true do |t|
     t.string   "name"
     t.string   "abbr"
     t.text     "description"
     t.string   "icd9"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "divisions", :force => true do |t|
+    t.string   "name"
+    t.string   "abbr"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dosages", :force => true do |t|
+    t.string   "units"
+    t.integer  "strength"
+    t.integer  "dose"
+    t.integer  "frequency"
+    t.string   "form"
+    t.string   "route"
+    t.integer  "drug_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53,15 +75,35 @@ ActiveRecord::Schema.define(:version => 20110404183819) do
     t.datetime "updated_at"
   end
 
+  create_table "prescriptions", :force => true do |t|
+    t.datetime "prescribed_at"
+    t.datetime "archived_at"
+    t.integer  "drug_id"
+    t.integer  "indication_id"
+    t.integer  "dosage_id"
+    t.integer  "user_id"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer "role_id"
     t.integer "user_id"
+  end
+
+  create_table "sites", :force => true do |t|
+    t.string   "name"
+    t.string   "abbr"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
@@ -84,6 +126,8 @@ ActiveRecord::Schema.define(:version => 20110404183819) do
     t.string   "name_suffix"
     t.string   "name_middle"
     t.string   "type"
+    t.integer  "site_id"
+    t.integer  "division_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

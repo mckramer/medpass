@@ -34,6 +34,7 @@ gem 'cancan'
 group :development do
   gem 'nifty-generators'
   gem 'heroku'
+  gem 'faker'
 end
 
 group :development, :test do

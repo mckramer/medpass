@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Units:</b>
+  <%= @dosage.units %>
+</p>
+
+<p>
+  <b>Strength:</b>
+  <%= @dosage.strength %>
+</p>
+
+<p>
+  <b>Dose:</b>
+  <%= @dosage.dose %>
+</p>
+
+<p>
+  <b>Frequency:</b>
+  <%= @dosage.frequency %>
+</p>
+
+<p>
+  <b>Form:</b>
+  <%= @dosage.form %>
+</p>
+
+<p>
+  <b>Route:</b>
+  <%= @dosage.route %>
+</p>
+
+<p>
+  <b>Drug:</b>
+  <%= @dosage.drug %>
+</p>
+
+
+<%= link_to 'Edit', edit_dosage_path(@dosage) %> |
+<%= link_to 'Back', dosages_path %>

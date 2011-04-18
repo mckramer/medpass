@@ -3,7 +3,7 @@ class Drug < ActiveRecord::Base
     :foreign_key => "parent_id"
   belongs_to :parent, :class_name => "Drug"
   
-  # has_many :dosages
+  has_many :dosages
   has_many :indications
 
 end

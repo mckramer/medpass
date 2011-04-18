@@ -1,0 +1,6 @@
+en:
+  division:
+    attributes:
+      name: 'name'
+      abbr: 'abbreviation'
+      site: 'site'

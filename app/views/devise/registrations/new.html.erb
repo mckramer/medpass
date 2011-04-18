@@ -1,68 +1,96 @@
 <h2><%= t 'devise.registrations.title_new' %></h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  
-  <fieldset>
-    <legend>User type and roles</legend>
-     <p>
-      <%= f.label :type %>
-      <% @types = [ 'participant', 'provider' ] %>
-      <% @types.each do |type| %>
-        <br><%= radio_button_tag :type, type, @type == type, :name => "user[type]", :id => "user_type_" + type %>
-        <label for="user_type_<%= type %>"><%= type.humanize %></label>
+<% if params[:type] == nil || (params[:type] != "participant" && params[:type] != "provider" ) %>
+
+<div>
+  <table style="width:100%;">
+    <thead>
+    </thead>
+    <tbody style="text-align:center;">
+      <tr>
+        <td style="width: 50%;">
+          <a href="?type=participant" class="button">Participant</a>
+          <p>A patient/participant<p>
+        </td>
+        <td style="width: 50%;">
+          <a href="?type=provider" class="button">Provider</a>
+          <p>A health provider</p>
+        </td>
+      </tr>
+    </thead>
+    <tfoot>
+    </tfoot>
+  </table>
+</div>
+
+<% else %>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    
+    <% @type = params[:type] %>
+    <%= f.hidden_field :type, :value => @type %>
+    
+    <fieldset>
+      <legend>Location</legend>
+      
+      <% if true %>
+      
+      <p id="block_user_site">
+        <label for="user_site">Site</label><br>
+        <select id="user_site" name="user[site]">
+          <option value="0">None selected</option>
+          <option value="1">University of North Carolina at Chapel Hill</option>
+          <option value="2">Ohio State University</option>
+        </select>
+      </p>
+      <% else %>
+      
       <% end %>
-    </p>
-    <p>
-      <label for="roles[]">Role(s)</label>
-      <% @roles = Role.all %>
-      <% @roles.each do |role| %>
-        <br><%= check_box_tag 'user[role_ids][]', role.id, false, :id => "user_roles_" + role.name %>
-        <label for="user_roles_<%= role.name %>"><%= role.name.humanize %></label>
-      <% end %>
-    </p>
-  </fieldset>
-  
-  <fieldset>
-    <legend>Group</legend>
-    <p>
-      <label for="user_site">Site</label><br>
-      <select id="user_site" name="user[site]">
-        <option value="0">None selected</option>
-        <option value="1">University of North Carolina at Chapel Hill</option>
-        <option value="2">Ohio State University</option>
-      </select>
-    </p>
-    <p>
-      <label for="user_division">Division</label><br>
-      <select id="user_division" name="user[division]">
-        <option value="0">None selected</option>
-        <option value="1">Kidney</option>
-        <option value="2">Gastro Intestinal</option>
-      </select>
-    </p>
-  </fieldset>
-  
-  <p><%= f.label :email %><br />
-  <%= f.text_field :email, :placeholder => t('attributes.email') %></p>
-  
-  <p><%= t('attributes.name') %><br />
-  <%= f.text_field :name_first, :placeholder => t('attributes.name_first') %><%= f.text_field :name_middle, :placeholder => "MI", :maxlength => 1 %><%= f.text_field :name_last, :placeholder => t('attributes.name_last') %><%= f.text_field :name_suffix, :placeholder => t('attributes.name_suffix') %></p>
-  
-  <p><%= f.label :language %><br />
-  <% if I18n.locale.to_s == 'en' %>
-    <%= f.select :language, [['English', 'en'], ['Spanish', 'es']] %></p>
-  <% else %>
-    <%= f.select :language, [['Español', 'es'], ['Inglés', 'en']] %></p>
+      <p id="block_user_division">
+        <label for="user_division">Division</label><br>
+        <select id="user_division" name="user[division]" disabled>
+          <option value="0">None selected</option>
+          <option value="1">Kidney</option>
+          <option value="2">Gastro Intestinal</option>
+        </select>
+      </p>
+    </fieldset>
+        
+    <% if @type == "provider" %>
+    <fieldset>
+      <legend>Roles</legend>
+      <div>
+        <% for role in Role.all %> 
+          <%= check_box_tag "user[role_ids][]", role.id, false, :id => "user_roles_#{role.name}" %> 
+          <label for="user_roles_<%= role.name %>"><%= role.name.humanize %></label>
+          <div style="margin: 0 35px; padding: 3px 7px; background-color: white; border-radius: 3px;"><%= role.description %></div>
+        <% end %>
+      </div>
+    </fieldset>
+    <% end %>
+    
+    <p><%= f.label :email %><br />
+    <%= f.text_field :email, :placeholder => t('attributes.email') %></p>
+    
+    <p><%= t('attributes.name') %><br />
+    <%= f.text_field :name_first, :placeholder => t('attributes.name_first') %><%= f.text_field :name_middle, :placeholder => "MI", :maxlength => 1 %><%= f.text_field :name_last, :placeholder => t('attributes.name_last') %><%= f.text_field :name_suffix, :placeholder => t('attributes.name_suffix') %></p>
+    
+    <p><%= f.label :language %><br />
+    <% if I18n.locale.to_s == 'en' %>
+      <%= f.select :language, [['English', 'en'], ['Spanish', 'es']] %></p>
+    <% else %>
+      <%= f.select :language, [['Español', 'es'], ['Inglés', 'en']] %></p>
+    <% end %>
+
+    <p><%= f.label :password %><br />
+    <%= f.password_field :password, :placeholder => t('attributes.password') %></p>
+
+    <p><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, :placeholder => t('attributes.password') %></p>
+
+    <p><%= f.submit t('devise.registrations.button_new') %></p>
   <% end %>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password, :placeholder => t('attributes.password') %></p>
-
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation, :placeholder => t('attributes.password') %></p>
-
-  <p><%= f.submit t('devise.registrations.button_new') %></p>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>

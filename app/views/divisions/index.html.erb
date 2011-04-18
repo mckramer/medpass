@@ -1,0 +1,27 @@
+<h1>Listing divisions</h1>
+
+<table class="sortable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Site</th>
+      <th colspan="3">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @divisions.each do |division| %>
+    <tr class="<%= cycle('even', 'odd') %>">
+      <td><%= division.name %></td>
+      <td><%= link_to division.site.abbr, division.site %></td>
+      <td><%= link_to 'Show', division %></td>
+      <td><%= link_to 'Edit', edit_division_path(division) %></td>
+      <td><%= link_to 'Destroy', division, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+  <tfoot></tfoot>
+</table>
+
+<br />
+
+<%= link_to 'New Division', new_division_path %>

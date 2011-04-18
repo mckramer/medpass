@@ -1,0 +1,35 @@
+<h1>Listing dosages</h1>
+
+<table>
+  <tr>
+    <th>Units</th>
+    <th>Strength</th>
+    <th>Dose</th>
+    <th>Frequency</th>
+    <th>Form</th>
+    <th>Route</th>
+    <th>Drug</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dosages.each do |dosage| %>
+  <tr>
+    <td><%= dosage.units %></td>
+    <td><%= dosage.strength %></td>
+    <td><%= dosage.dose %></td>
+    <td><%= dosage.frequency %></td>
+    <td><%= dosage.form %></td>
+    <td><%= dosage.route %></td>
+    <td><%= dosage.drug %></td>
+    <td><%= link_to 'Show', dosage %></td>
+    <td><%= link_to 'Edit', edit_dosage_path(dosage) %></td>
+    <td><%= link_to 'Destroy', dosage, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dosage', new_dosage_path %>

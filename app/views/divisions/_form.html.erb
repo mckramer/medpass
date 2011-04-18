@@ -1,0 +1,38 @@
+<%= form_for(@division) do |f| %>
+  <% if @division.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@division.errors.count, "error") %> prohibited this division from being saved:</h2>
+
+      <ul>
+      <% @division.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :abbr %><br />
+    <%= f.text_field :abbr %>
+  </div>
+  <div class="field">
+    <%= f.label :site %><br />
+    <% if current_user.type == "provider" %>
+    <%= f.collection_select :site_id, Site.all, :id, :name, :prompt => "Select a site" %>
+    <% else %>
+      <% if @division.site == nil %>
+    <%= link_to @division.site.name, @division.site %>
+      <% else %>
+    <span>Error: Please contact site admin with code 12311jfsdf435fg</span>
+      <% end %>
+    <% end %>
+</p>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

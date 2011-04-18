@@ -1,3 +1,4 @@
 class Allergen < ActiveRecord::Base
-  has_many :sufferers, :class_name => :users
+  has_many :allergies
+  has_many :users, :through => :allergies
 end

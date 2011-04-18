@@ -2,13 +2,14 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :roles
   
-  # belongs_to :institution
-  # belongs_to :division
+  belongs_to :site
+  belongs_to :division
   
   # has_one :emergency_contact
   
   has_many :allergies
   has_many :allergens, :through => :allergies
+  has_many :prescriptions
   
   # has_many :diagnoses
   # has_many :conditions, :through => :diagnoses
@@ -25,13 +26,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :language, :name_first, :name_last, :name_middle, :name_suffix
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :language, :name_first, :name_last, :name_middle, :name_suffix, :site_id, :division_id
   
   validates :name_first,   
             :presence => true,   
             :length => { :within => 1..30 }
             
-    validates :name_middle,
+  validates :name_middle,
             :length => { :maximum => 1 }
   
   validates :name_last,   
@@ -47,4 +48,8 @@ class User < ActiveRecord::Base
             :presence => true,   
             :length => { :within => 8..36 },
             :exclusion => { :in => %w( password 1qaz2wsx 12345678 123456789 ) }
+            
+  def name
+    name_last + ", " + name_first
+  end
 end

@@ -3,11 +3,11 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
-    if user.role? :super_admin
+    if user.roles.include? :study_admin
       can :manage, :all
-    elsif user.role? :site_coordinator
+    elsif user.roles? :site_coordinator
       can :manage, [Product, Asset, Issue]
-    elsif user.role? :division_coordinator
+    elsif user.roles? :division_coordinator
       can :read, [Product, Asset]
       # manage products, assets he owns
       can :manage, Product do |product|
