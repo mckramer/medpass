@@ -5,12 +5,24 @@ gem 'rails', '3.0.4'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+# Database
 gem 'sqlite3'
+# gem 'sqlite3-ruby', :require => 'sqlite3'
+# gem 'mysql'
 
 # Authorization
 gem 'devise'
 # gem 'omniauth'
 gem 'cancan'
+
+# Markup
+# gem 'haml'
+# gem 'haml-rails'
+
+# Other
+gem 'jquery-rails'
+gem 'faker'
+# gem 'paperclip', "~> 2.3" # File attachments for ActiveRecord
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -25,7 +37,6 @@ gem 'cancan'
 # Bundle the extra gems:
 # gem 'bj'
 # gem 'nokogiri'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
 # Bundle gems for the local environment. Make sure to
@@ -34,7 +45,7 @@ gem 'cancan'
 group :development do
   gem 'nifty-generators'
   gem 'heroku'
-  gem 'faker'
+  #gem 'faker'
 end
 
 group :development, :test do
