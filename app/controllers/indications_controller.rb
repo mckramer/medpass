@@ -1,8 +1,16 @@
 class IndicationsController < ApplicationController
-  # GET /indications
-  # GET /indications.xml
+  before_filter(:get_drug)
+
+  private
+  def get_drug
+    @drug = Drug.find(params[:drug_id])
+  end
+  
+  public
+  # GET /drugs/1/indications
+  # GET /drugs/1/indications.xml
   def index
-    @indications = Indication.all
+    @indications = @drug.indications
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,8 +18,8 @@ class IndicationsController < ApplicationController
     end
   end
 
-  # GET /indications/1
-  # GET /indications/1.xml
+  # GET /drugs/1/indications/1
+  # GET /drugs/1/indications/1.xml
   def show
     @indication = Indication.find(params[:id])
 
@@ -21,8 +29,8 @@ class IndicationsController < ApplicationController
     end
   end
 
-  # GET /indications/new
-  # GET /indications/new.xml
+  # GET /drugs/1/indications/new
+  # GET /drugs/1/indications/new.xml
   def new
     @indication = Indication.new
 
@@ -32,13 +40,13 @@ class IndicationsController < ApplicationController
     end
   end
 
-  # GET /indications/1/edit
+  # GET /drugs/1/indications/1/edit
   def edit
     @indication = Indication.find(params[:id])
   end
 
-  # POST /indications
-  # POST /indications.xml
+  # POST /drugs/1/indications
+  # POST /drugs/1/indications.xml
   def create
     @indication = Indication.new(params[:indication])
 
@@ -53,8 +61,8 @@ class IndicationsController < ApplicationController
     end
   end
 
-  # PUT /indications/1
-  # PUT /indications/1.xml
+  # PUT /drugs/1/indications/1
+  # PUT /drugs/1/indications/1.xml
   def update
     @indication = Indication.find(params[:id])
 
@@ -69,8 +77,8 @@ class IndicationsController < ApplicationController
     end
   end
 
-  # DELETE /indications/1
-  # DELETE /indications/1.xml
+  # DELETE /drugs/1/indications/1
+  # DELETE /drugs/1/indications/1.xml
   def destroy
     @indication = Indication.find(params[:id])
     @indication.destroy
@@ -80,4 +88,5 @@ class IndicationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
 end

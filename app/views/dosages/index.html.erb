@@ -1,35 +1,35 @@
-<h1>Listing dosages</h1>
+<hgroup>
+  <h1>Listing dosages</h1>
+  <h2>for <%= link_to @drug.name, drug_path(@drug) %></h2>
+</hgroup>
 
-<table>
-  <tr>
-    <th>Units</th>
-    <th>Strength</th>
-    <th>Dose</th>
-    <th>Frequency</th>
-    <th>Form</th>
-    <th>Route</th>
-    <th>Drug</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @dosages.each do |dosage| %>
-  <tr>
-    <td><%= dosage.units %></td>
-    <td><%= dosage.strength %></td>
-    <td><%= dosage.dose %></td>
-    <td><%= dosage.frequency %></td>
-    <td><%= dosage.form %></td>
-    <td><%= dosage.route %></td>
-    <td><%= dosage.drug %></td>
-    <td><%= link_to 'Show', dosage %></td>
-    <td><%= link_to 'Edit', edit_dosage_path(dosage) %></td>
-    <td><%= link_to 'Destroy', dosage, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+<table class="sortable">
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>Strength</th>
+      <th>Dose</th>
+      <th>Frequency</th>
+      <th>Form</th>
+      <th>Route</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @dosages.each do |dosage| %>
+    <tr class="<%= cycle('even', 'odd') %>">
+      <td><%= link_to 'View', drug_dosage_path(@drug, dosage) %></td>
+      <td><%= dosage.strength_text %></td>
+      <td><%= dosage.dose_text %></td>
+      <td><%= dosage.frequency_text %></td>
+      <td><%= dosage.form %></td>
+      <td><%= dosage.route %></td>
+    </tr>
+  <% end %>
+    </tbody>
+  <tfoot></tfoot>
 </table>
 
 <br />
 
-<%= link_to 'New Dosage', new_dosage_path %>
+<%= link_to "Add new dosage for #{@drug.name}", new_drug_dosage_path(@drug) %><br/>
+<%= link_to "Return to #{@drug.name}", drug_path(@drug) %>

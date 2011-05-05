@@ -1,20 +1,19 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Text:</b>
-  <%= @indication.text %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @indication.description %>
-</p>
-
-<p>
-  <b>Drug:</b>
-  <%= @indication.drug %>
-</p>
-
-
-<%= link_to 'Edit', edit_indication_path(@indication) %> |
-<%= link_to 'Back', indications_path %>
+<hgroup>
+  <h1>Viewing indication</h1>
+  <h2>for <%= link_to @indication.drug.name, @indication.drug %></h2>
+</hgroup>
+<div class="fields">
+  <p>
+    <b>Text:</b>
+    <%= @indication.text %>
+  </p>
+  <p>
+    <b>Description:</b>
+    <%= @indication.description %>
+  </p>
+</div>
+<div class="toolbar">
+  <%= link_to 'Edit', edit_drug_indication_path(@indication) %> |
+  <%= link_to "Return to #{@drug.name}", drug_path(@drug) %>
+</div>

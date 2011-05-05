@@ -1,6 +1,9 @@
-<h1>Editing indication</h1>
+<hgroup>
+  <h1>Editing indication</h1>
+  <h2>for <%= link_to @indication.drug.name, @indication.drug %></h2>
+</hgroup>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @indication %> |
-<%= link_to 'Back', indications_path %>
+<%= link_to 'Show', drug_indication_path %> |
+<%= link_to 'Back', drug_indications_path %>

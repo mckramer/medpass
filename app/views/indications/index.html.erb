@@ -1,11 +1,15 @@
 <h1>Listing indications</h1>
+<h2>for <%= link_to @drug.name, drug_path(@drug) %></h2>
 
+<% if @indications.nil? %>
+<p>This drug does not have any indications.  Please add some below.</p>
+<% else %>
 <table class="sortable">
   <thead>
     <tr>
       <th>Name</th>
       <th>Drug</th>
-      <th colspan="3">Options</th>
+      <th colspan="2">Options</th>
     </tr>
   </thead>
   <tbody>
@@ -13,15 +17,15 @@
     <tr class="<%= cycle('even', 'odd') %>">
       <td><%= indication.text %></td>
       <td><%= link_to indication.drug.name, indication.drug %></td>
-      <td><%= link_to 'Show', indication %></td>
-      <td><%= link_to 'Edit', edit_indication_path(indication) %></td>
-      <td><%= link_to 'Destroy', indication, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to 'Show', drug_indication_path(indication.drug_id, indication.id) %></td>
+      <td><%= link_to 'Edit', edit_drug_indication_path(indication.drug_id, indication.id) %></td>
     </tr>
   <% end %>
   </tbody>
   <tfoot></tfoot>
 </table>
-
+<% end %>
 <br />
 
-<%= link_to 'New Indication', new_indication_path %>
+<%= link_to "Add new indication for #{@drug.name}", new_drug_indication_path(@drug) %><br/>
+<%= link_to "Return to #{@drug.name}", drug_path(@drug) %>

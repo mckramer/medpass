@@ -1,8 +1,16 @@
 class DosagesController < ApplicationController
+  before_filter(:get_drug)
+
+  private
+  def get_drug
+    @drug = Drug.find(params[:drug_id])
+  end
+  
+  public
   # GET /dosages
   # GET /dosages.xml
   def index
-    @dosages = Dosage.all
+    @dosages = @drug.dosages
 
     respond_to do |format|
       format.html # index.html.erb

@@ -4,20 +4,20 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Abbr</th>
       <th>Parent</th>
-      <th colspan="3">Options</th>
+      <th># of indications</th>
+      <th># of dosages</th>
+      <th>Option(s)</th>
     </tr>
   </thead>
   <tbody>
   <% @drugs.each do |drug| %>
     <tr class="<%= cycle('even', 'odd') %>">
       <td><%= drug.name %></td>
-      <td><%= drug.abbr %></td>
-      <td><%= drug.parent_id %></td>
+      <td><%= (drug.parent.nil?) ? 'n/a' : link_to('Yes', drug.parent) %></td>
+      <td><%= drug.indications.count %></td>
+      <td><%= drug.dosages.count %></td>
       <td><%= link_to 'Show', drug %></td>
-      <td><%= link_to 'Edit', edit_drug_path(drug) %></td>
-      <td><%= link_to 'Destroy', drug, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
   </tbody>

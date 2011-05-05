@@ -61,7 +61,11 @@ a:focus {
   width: 25%;
 }
 #side-nav ul {
+  font-size:18px; 
+  line-height: 150%; 
   list-style-type: none;
+  margin: 5px 20px; 
+  padding-left:0px
 }
 #side-nav li {
   text-align: right;
@@ -70,9 +74,11 @@ a:focus {
   background-color: violet;
   border-radius: 5px;
 }
-#side-nav a {
+#side-nav a:link, #side-nav a:visited {
+  color: inherit;
   display: block;
   padding-right: 5px;
+  text-decoration: none;
 }
 
 .wrapper {
@@ -148,7 +154,7 @@ textarea,
   font-family: inherit;
   font-size: 115%;
   border-radius: 5px;
-  /*outline: none;*/
+  outline: none;
 }
 input:focus,
 textarea:focus {
@@ -158,9 +164,15 @@ input[type=text],
 input[type=password],
 textarea {
   background-color: white;
-  box-shadow: inset 0 0 2px #4C4C4B;
+  border: 1px solid #4C4C4B;
+  /*box-shadow: inset 0 0 2px #4C4C4B;*/
   padding: 4px;
   min-width: 344px;
+}
+input[type=text]:focus,
+input[type=password]:focus,
+textarea:focus {
+  border-color: teal;
 }
 input[type=submit],
 .button {
@@ -172,6 +184,7 @@ input[type=submit]:hover,
 input[type=submit]:focus,
 .button:hover {
   background-color: indigo;
+  border-color: gold;
   cursor: pointer;
 }
 
@@ -189,7 +202,7 @@ option {
   padding: 4px;
 }
 textarea {
-
+  height: 200px;
 }
 
 .button {
@@ -223,16 +236,23 @@ textarea {
 }
 .sortable td, .sortable th {
   border: 2px solid white;
-  vertical-align:middle;
+  vertical-align: middle;
 }
-.sortable thead {background: skyblue;}
+.sortable thead {
+  background-color: teal;
+  color: white;
+}
 .sortable thead th {
   font-size: 110%;
   padding: 8px 4px;
 }
-.sortable .odd {background: azure;}
-.sortable .even {background: snow;}
-.sortable tr:hover {background: skyblue;}
+.sortable tbody .odd {background-color: #e0ffff;}
+.sortable tbody .even {background-color: snow;}
+.sortable tbody tr:hover {background-color: #66cdaa;}
+.sortable tfoot {
+  background-color: teal;
+  color: white;
+}
 .sortable td {
   padding: 2px;
   text-align: center;
@@ -242,6 +262,61 @@ textarea {
   display: block;
 }
 .sortable a:hover {
-  background: #369;
+  background: #teal;
   color: white;
+}
+.input-form {
+  background-color: white;
+  border-spacing: 0px;
+  border-radius: 5px;
+  margin: 20px;
+  overflow: hidden;
+}
+.input-form tbody {
+
+}
+.input-form tr {
+
+}
+.input-form td, .input-form th {
+  border-bottom: 1px solid teal;
+  padding: 10px;
+}
+.input-form th {
+  background-color: #66cdaa;
+  line-height: 150%;
+  text-align: left;
+  width: 180px;
+}
+.input-form label {
+  display: block;
+}
+.input-form label:hover {
+  cursor: pointer;
+}
+.input-form .form-tip {
+  font-size: 80%;
+}
+.input-form input[type=text],
+.input-forminput[type=password],
+.input-form textarea {
+  /*background-color: gray;*/
+}
+
+form .actions {
+  margin-bottom: 20px;
+}
+
+#error_explanation {
+  background-color: #dda0dd; /* plum */
+  padding: 5px 20px;
+}
+#error_explanation h2 {
+
+}
+#error_explanation ul {
+  list-style: square;
+}
+#error_explanation li {
+
 }

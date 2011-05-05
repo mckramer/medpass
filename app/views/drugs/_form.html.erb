@@ -25,8 +25,9 @@
   </div>
   <div class="field">
     <%= f.label :parent_id %><br />
-    <%= f.text_field :parent_id %>
+    <%= f.collection_select :parent_id, Drug.all, :id, :name, :prompt => true %>
   </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

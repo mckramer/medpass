@@ -12,7 +12,7 @@
     <%= javascript_include_tag :defaults %>
     <%= yield(:head) %>
   </head>
-  <body>
+  <body class="<%= params.values_at(:controller, :action).join(' ') %>">
     <div class="wrapper" style="background-color:lightgray;border-radius:3px;margin-top: 5px;">
       <div style="padding: 4px; text-align:center;">
         <% if user_signed_in? %>
@@ -58,16 +58,26 @@
         </div>
       </div>
       <nav id="side-nav">
-        <ul style="font-size:18px; margin: 5px 20px; line-height: 150%; padding-left:0px"> 
-					<li><a class="active" href="/" style="color:white; text-decoration:none;"><%= t 'nav.main.home' %></a></li>
-          <li><a href="/about" style="color:white; text-decoration:none;"><%= t 'nav.main.about' %></a></li> 
-          <li><a href="/contact" style="color:white; text-decoration:none;"><%= t 'nav.main.info' %></a></li>
-          <li><a href="#" style="color:white; text-decoration:none;"><%= t 'nav.main.members' %></a></li> 
-          <li><a href="#" style="color:white; text-decoration:none;"><%= t 'nav.main.programs' %></a></li> 
-					<li><a href="/passport" style="color:white; text-decoration:none;">Medical Passport&trade;
-          </a></li> 
-					<li><a href="#" style="color:white; text-decoration:none;"><%= t 'nav.main.games' %></a></li> 
+        <ul> 
+					<li><a class="active" href="/"><%= t 'nav.main.home' %></a></li>
+          <li><a href="/about"><%= t 'nav.main.about' %></a></li> 
+          <li><a href="/contact"><%= t 'nav.main.info' %></a></li>
+          <li><a href="#"><%= t 'nav.main.members' %></a></li> 
+          <li><a href="#"><%= t 'nav.main.programs' %></a></li> 
+					<li><a href="/passport">Medical Passport&trade;</a></li> 
+					<li><a href="#"><%= t 'nav.main.games' %></a></li>
 				</ul>
+        <!-- test links here -->
+        <hr>
+        <p style="text-align:center;">Test links<p>
+        <ul> 
+					<li><%= link_to 'Users', users_path %></li>
+          <li><%= link_to 'Allergens', allergens_path %></li>
+          <li><%= link_to 'Allergies', allergies_path %></li>
+          <li><%= link_to 'Drugs', drugs_path %></li>
+          <li><%= link_to 'Sites', sites_path %></li>
+        </ul>
+        <!-- end test links -->
       </nav>
       <div class="clear"></div>
     </div>

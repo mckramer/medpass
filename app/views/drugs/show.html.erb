@@ -1,25 +1,85 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @drug.name %>
-</p>
+<hgroup>
+  <h1>Drug</h1>
+  <h2>Information</h2>
+</hgroup>
 
-<p>
-  <b>Abbr:</b>
-  <%= @drug.abbr %>
-</p>
+<div class="fields">
+  <p>
+    <b>Name:</b>
+    <%= @drug.name %>
+  </p>
+  <% unless @drug.abbr.blank? %>
+  <p>
+    <b>Abbr:</b>
+    <%= @drug.abbr %>
+  </p>
+  <% end %>
+  <p>
+    <b>Description:</b>
+    <%= @drug.description %>
+  </p>
+  <p>
+    <b>Parent:</b>
+    <%= (@drug.parent.nil?) ? 'n/a' : link_to(@drug.parent.name, @drug.parent) %>
+  </p>
+</div>
+<nav class="toolbar">
+  <%= link_to 'Edit', edit_drug_path(@drug) %> |
+  <%= link_to 'Back', drugs_path %>
+</nav>
 
-<p>
-  <b>Description:</b>
-  <%= @drug.description %>
-</p>
+<h2>Dosages</h2>
+<table class="sortable">
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>Strength</th>
+      <th>Dose</th>
+      <th>Frequency</th>
+      <th>Form</th>
+      <th>Route</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @drug.dosages.each do |dosage| %>
+    <tr class="<%= cycle('even', 'odd') %>">
+      <td><%= link_to 'View', drug_dosage_path(@drug, dosage) %></td>
+      <td><%= dosage.strength_text %></td>
+      <td><%= dosage.dose_text %></td>
+      <td><%= dosage.frequency_text %></td>
+      <td><%= dosage.form %></td>
+      <td><%= dosage.route %></td>
+    </tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="100%" style="text-align:right;">Number of dosages: <%= @drug.dosages.count %></td>
+    </tr>
+  </tfoot>
+</table>
 
-<p>
-  <b>Parent:</b>
-  <%= @drug.parent_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_drug_path(@drug) %> |
-<%= link_to 'Back', drugs_path %>
+<h2>Indications</h2>
+<table class="sortable">
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>Text</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @drug.indications.each do |indication| %>
+    <tr class="<%= cycle('even', 'odd') %>">
+      <td><%= link_to 'View', drug_indication_path(@drug, indication) %></td>
+      <td><%= indication.text %></td>
+    </tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2" style="text-align:right;">Number of indications: <%= @drug.indications.count %></td>
+    </tr>
+  </tfoot>
+</table>

@@ -1,23 +1,19 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Units:</b>
-  <%= @dosage.units %>
-</p>
+<h2>Dosage</h2>
+<h2>for <%= link_to @dosage.drug.name, @dosage.drug %></h2>
 
 <p>
   <b>Strength:</b>
-  <%= @dosage.strength %>
+  <%= @dosage.strength_text %>
 </p>
 
 <p>
   <b>Dose:</b>
-  <%= @dosage.dose %>
+  <%= @dosage.dose_text %>
 </p>
 
 <p>
   <b>Frequency:</b>
-  <%= @dosage.frequency %>
+  <%= @dosage.frequency_text %>
 </p>
 
 <p>
@@ -30,11 +26,6 @@
   <%= @dosage.route %>
 </p>
 
-<p>
-  <b>Drug:</b>
-  <%= @dosage.drug %>
-</p>
 
-
-<%= link_to 'Edit', edit_dosage_path(@dosage) %> |
-<%= link_to 'Back', dosages_path %>
+<%= link_to 'Edit', edit_drug_dosage_path(@drug, @dosage) %> |
+<%= link_to 'Back', drug_dosages_path(@drug) %>

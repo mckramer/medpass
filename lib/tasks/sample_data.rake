@@ -205,8 +205,8 @@ def make_indications
 end
 
 def make_dosages
-  units_list = ['mg', 'mL']
-  frequencies = [0, 6, 8, 12, 24, 56, 84, 168]
+  units_list = ['mg', 'mL', 'oz']
+  frequencies = [1, 2, 4, 6, 8, 12, 24, 56, 84, 168]
   forms = ['tablet', 'capsule', 'liquid', 'gel', 'cream']
   routes = ['oral', 'nasal', 'Intraveneous (IV)', 'Intramusculer (IM)', 'topical']
   make_count = (1..3).to_a

@@ -1,4 +1,4 @@
-<%= form_for(@dosage) do |f| %>
+<%= form_for([@drug, @dosage]) do |f| %>
   <% if @dosage.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@dosage.errors.count, "error") %> prohibited this dosage from being saved:</h2>
@@ -8,37 +8,52 @@
         <li><%= msg %></li>
       <% end %>
       </ul>
+      <p>Please correct any errors below.</p>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :units %><br />
-    <%= f.text_field :units %>
-  </div>
-  <div class="field">
-    <%= f.label :strength %><br />
-    <%= f.text_field :strength %>
-  </div>
-  <div class="field">
-    <%= f.label :dose %><br />
-    <%= f.text_field :dose %>
-  </div>
-  <div class="field">
-    <%= f.label :frequency %><br />
-    <%= f.text_field :frequency %>
-  </div>
-  <div class="field">
-    <%= f.label :form %><br />
-    <%= f.text_field :form %>
-  </div>
-  <div class="field">
-    <%= f.label :route %><br />
-    <%= f.text_field :route %>
-  </div>
-  <div class="field">
-    <%= f.label :drug %><br />
-    <%= f.text_field :drug %>
-  </div>
+  
+  <%= f.hidden_field :drug_id %>
+  
+  <table class="input-form">
+    <thead></thead>
+    <tbody>
+      <tr>
+        <th><%= f.label :units %></th>
+        <td><%= select_tag :units, options_for_select(Dosage.units_list, @dosage.units), { :include_blank => true } %><br/><span class="form-tip"><%= t 'dosage.attributes.units.tip' %></span></td>
+      </tr>
+      <tr>
+        <th><%= f.label :strength %></th>
+        <td>
+          <%= f.text_field :strength, :style => "width:200px; min-width:100px; text-align:right;" %> <%= @dosage.units %>
+          <br/><span class="form-tip"><%= t 'dosage.attributes.strength.tip' %></span>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :dose %></th>
+        <td>
+          <%= f.text_field :dose, :style => "width:200px; min-width:100px; text-align:right;" %> <%= @dosage.units %>
+          <br/><span class="form-tip"><%= t 'dosage.attributes.dose.tip' %></span>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :frequency %></th>
+        <td>
+          every <%= f.text_field :frequency, :style => "width:50px; min-width:50px; text-align:right;" %> hours or <%= select_tag :frequency, options_for_select(Dosage.frequency_list), { :include_blank => true, :style => "width:150px; min-width:100px;" } %>
+          <br/><span class="form-tip"><%= t 'dosage.attributes.frequency.tip' %></span>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :form %></th>
+        <td><%= select_tag :form, options_for_select(Dosage.form_list, @dosage.form), { :include_blank => true } %><br/><span class="form-tip"><%= t 'dosage.attributes.form.tip' %></span></td>
+      </tr>
+      <tr>
+        <th><%= f.label :route %></th>
+        <td><%= select_tag :route, options_for_select(Dosage.route_list, @dosage.route), { :include_blank => true } %><br/><span class="form-tip"><%= t 'dosage.attributes.route.tip' %></span></td>
+      </tr>
+    </tbody>
+    <tfoot></tfoot>
+  </table>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

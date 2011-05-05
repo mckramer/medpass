@@ -3,7 +3,9 @@ class Drug < ActiveRecord::Base
     :foreign_key => "parent_id"
   belongs_to :parent, :class_name => "Drug"
   
-  has_many :dosages
-  has_many :indications
+  has_many :dosages, :dependent => :destroy
+  has_many :indications, :dependent => :destroy
+  
+  validates_presence_of :name, :description
 
 end

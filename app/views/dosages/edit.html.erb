@@ -1,6 +1,9 @@
-<h1>Editing dosage</h1>
+<hgroup>
+  <h1>Editing dosage</h1>
+  <h2>for <%= link_to @drug.name, @drug %></h2>
+</hgroup>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @dosage %> |
-<%= link_to 'Back', dosages_path %>
+<%= link_to 'Show dosage', drug_dosage_path(@drug, @dosage) %> |
+<%= link_to "Return to #{@drug.name}", drug_path(@drug) %>

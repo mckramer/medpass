@@ -1,0 +1,7 @@
+en:
+  indication:
+    attributes:
+      text: 'text'
+        tip: 'Should follow the format of "Drug is (used) to ___"'
+      description: 'description'
+        tip: 'The description can be a good place to explain the short text above.  Later providers better consider editing the text by seeing the original thoughts.'
