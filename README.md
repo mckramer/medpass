@@ -35,6 +35,7 @@ Things that still need to be implemented or changed.
 4. Client-side validations (gem 'client_side_validations' at https://github.com/bcardarella/client_side_validations/)
 5. Refactor roles to User `has_one` Role, versus a `has_and_belongs_to_many` relationship.  I do not see a need for this complexity, considering that roles will inherit from each other.
 6. Remove ability to edit roles.  Should be fine to leave them hard-coded.
+7. Add `gem paperclip` to `sites` to allow uploading of images.
 
 Questions?
 ----------

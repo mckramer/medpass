@@ -258,13 +258,19 @@ textarea {
   text-align: center;
 }
 .sortable a, .sortable a:link, .sortable a:visited {
-  text-decoration: none;
   display: block;
+  height: 100%;
+  text-decoration: none;
+  width: 100%;
 }
 .sortable a:hover {
   background: #teal;
   color: white;
 }
+.sortable .non-highlight tr:hover {
+  background-color: inherit;
+}
+
 .input-form {
   background-color: white;
   border-spacing: 0px;

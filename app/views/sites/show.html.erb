@@ -1,14 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Image:</b>
-  #TODO
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @site.name %>
-</p>
+<div style="float: right;"><%= image_tag "http://transition.zhanxz.net/images/institution/#{@site.id}.jpg", :size => "100x100" %></div>
+<hgroup>
+  <h1>Viewing site information</h1>
+  <h2>for <%= @site.name %></h2>
+</hgroup>
 
 <p>
   <b>Abbr:</b>
@@ -24,24 +20,20 @@
         <th>Name</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="non-highlight">
     <% count = User.count(:group => :division_id, :conditions => {:site_id => @site.id}) %>
     <% current_division = nil %>
-    <% row_style = "even" %>
+    <% row_style = 'even' %>
     <% User.where(:site_id => @site.id).order(:division_id).each do |user| %>
       <% if current_division.nil? || current_division != user.division_id %>
         <% current_division = user.division_id %>
-        <% if row_style == "even" %>
-          <% row_style = "odd" %>
-        <% else %>
-          <% row_style = "even" %>
-        <% end %>
+        <% row_style = cycle('even', 'odd') %>
       <tr class="<%= row_style %>">
-        <td rowspan="<%= count[current_division] %>" style="border-color: gray;"><%= user.division.name %></td>
-        <td style="border-color: gray;"><%= user.name %></td>
+        <td rowspan="<%= count[current_division] %>"><%= link_to user.division.name, site_division_path(user.division) %></td>
+        <td><%= link_to user.name, user_path(user) %></td>
       <% else %>
       <tr class="<%= row_style %>">
-        <td style="border-color: gray;"><%= user.name %></td>
+        <td><%= link_to user.name, user_path(user) %></td>
       <% end %>
         
       </tr>
