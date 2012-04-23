@@ -27,10 +27,12 @@ Medpass::Application.routes.draw do
   match "/providers/:id" => "Users#show"
 
   # Static pages
-  match 'about' => 'page#about'
-  match 'contact' => 'page#contact'
+  match '/about' => 'pages#about', as: 'about'
+  match '/contact' => 'pages#contact', as: 'contact'
+  match '/legal' => 'pages#legal', as: 'legal'
+  match '/privacy' => 'pages#privacy', as: 'privacy_policy'
   
   # Root of site
-  root :to => "page#home"
+  root :to => "pages#home"
 
 end

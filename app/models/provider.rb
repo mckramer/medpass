@@ -1,5 +1,9 @@
 class Provider < User
 
+  def provider?
+    true
+  end
+  
   self.AVAILABLE_ROLES = %w[super study_admin site_coordinator division_coordinator provider]
 
   def super?

@@ -52,11 +52,11 @@
       <nav id="side-nav">
         <ul> 
 					<li><%= link_to t('nav.main.home'), root_path %></li>
-          <li><%= link_to t('nav.main.about', "/about" %></li> 
-          <li><%= link_to t('nav.main.info'), "/contact" %></li>
+          <li><%= link_to t('nav.main.about'), about_path %></li> 
+          <li><%= link_to t('nav.main.info'), contact_path %></li>
           <li><%= link_to t('nav.main.members'), root_path %></li> 
           <li><%= link_to t('nav.main.programs'), root_path %></li> 
-					<li><%= link_to "Medical Passport&trade;", "/passport" %></li> 
+					<li><%= link_to "Medical Passport&trade;".html_safe, "/passport" %></li> 
 					<li><%= link_to t('nav.main.games'), root_path %></li>
 				</ul>
         <!-- test links here -->
@@ -73,7 +73,7 @@
       <div class="clear"></div>
     </div>
     <footer id="footer" class="wrapper" style="text-align:center;">
-      <p>Copyright &copy; 2010-2011 - All Rights Reserved | <a href="#">Privacy Policy</a></p> 
+      <p>Copyright &copy; 2010-2012 - All Rights Reserved | <a href="#">Privacy Policy</a></p> 
       <p>All information is confidential.  Do not share information, except with authorized individuals.</p> 
     </footer>
   </body>

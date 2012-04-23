@@ -10,5 +10,39 @@
   <%= @user.email %>
 </p>
 
+<div>
+  <table class="sortable">
+    <thead>
+      <tr>
+        <th>Prescriptions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.prescriptions.each do |prescription| %>
+        <tr class="<%= cycle('odd', 'even') %>">
+          <td><%= prescription.drug.name %></td>
+        </tr>
+      <% end %>
+    </tobdy>
+  </table>
+</div>
+
+<div>
+  <table class="sortable">
+    <thead>
+      <tr>
+        <th>Allergy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.allergies.each do |allergy| %>
+        <tr class="<%= cycle('odd', 'even') %>">
+          <td><%= allergy.allergen.name %></td>
+        </tr>
+      <% end %>
+    </tobdy>
+  </table>
+</div>
+
 <%= link_to 'Edit', edit_user_registration_path(@user) %> |
 <%= link_to 'Back', :back %>

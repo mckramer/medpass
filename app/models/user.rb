@@ -52,11 +52,11 @@ class User < ActiveRecord::Base
   end
   
   def provider?
-    type == :provider
+    false
   end
   
   def participant?
-    type == :participant
+    false
   end
   
   

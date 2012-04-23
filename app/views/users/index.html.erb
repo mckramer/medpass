@@ -5,7 +5,7 @@
     <tr>
       <th>Name</th>
       <th>Type</th>
-      <th>Roles</th>
+      <th>Role</th>
       <th>Site</th>
       <th>Division</th>
     </tr>
@@ -13,9 +13,9 @@
   <tbody>
   <% @users.each do |user, n| %>
     <tr class="<%= cycle('even', 'odd') %>">
-      <td><%= user.name %></td>
+      <td><%= link_to_if true, user.name, user_path(user) %></td>
       <td><%= user.type %></td>
-      <td><%= user.roles %></td>
+      <td><%= user.role %></td>
       <td><%= user.site.abbr %></td>
       <td><%= user.division.name %></td>
     </tr>
