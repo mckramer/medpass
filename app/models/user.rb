@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
 
-  has_and_belongs_to_many :roles
-  
   belongs_to :site
   belongs_to :division
   
@@ -52,4 +50,14 @@ class User < ActiveRecord::Base
   def name
     name_last + ", " + name_first
   end
+  
+  def provider?
+    type == :provider
+  end
+  
+  def participant?
+    type == :participant
+  end
+  
+  
 end

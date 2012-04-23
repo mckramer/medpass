@@ -36,14 +36,6 @@
         <h2 style="color:#4C4C4B; margin:0; padding:0;"><%= t 'motto' %></h2>
 			</hgroup>	
       <div class="clear"></div>
-      <nav style="display:none;">  
-        <ul> 
-					<li><a class="active" href="/">Study</a></li> 
-					<li><a href="/passport.php">Medical Passport™</a></li> 
-					<li><a href="/challenge.php">Kidney Challenge</a></li> 
-					<li><a href="/providertools.php">Tools for Providers</a></li> 
-				</ul>
-      </nav>
     </header>
     <div id="container">
       <%= content_tag :h1, yield(:title) if show_title? %>
@@ -59,13 +51,13 @@
       </div>
       <nav id="side-nav">
         <ul> 
-					<li><a class="active" href="/"><%= t 'nav.main.home' %></a></li>
-          <li><a href="/about"><%= t 'nav.main.about' %></a></li> 
-          <li><a href="/contact"><%= t 'nav.main.info' %></a></li>
-          <li><a href="#"><%= t 'nav.main.members' %></a></li> 
-          <li><a href="#"><%= t 'nav.main.programs' %></a></li> 
-					<li><a href="/passport">Medical Passport&trade;</a></li> 
-					<li><a href="#"><%= t 'nav.main.games' %></a></li>
+					<li><%= link_to t('nav.main.home'), root_path %></li>
+          <li><%= link_to t('nav.main.about', "/about" %></li> 
+          <li><%= link_to t('nav.main.info'), "/contact" %></li>
+          <li><%= link_to t('nav.main.members'), root_path %></li> 
+          <li><%= link_to t('nav.main.programs'), root_path %></li> 
+					<li><%= link_to "Medical Passport&trade;", "/passport" %></li> 
+					<li><%= link_to t('nav.main.games'), root_path %></li>
 				</ul>
         <!-- test links here -->
         <hr>

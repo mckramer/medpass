@@ -1,18 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.4'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails', '3.2.0'
 
 # Database
 gem 'sqlite3'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'mysql'
 
 # Authorization
 gem 'devise'
-# gem 'omniauth'
 gem 'cancan'
 
 # Markup
@@ -20,24 +14,16 @@ gem 'cancan'
 # gem 'haml-rails'
 
 # Other
-gem 'jquery-rails'
+
 gem 'faker'
 # gem 'paperclip', "~> 2.3" # File attachments for ActiveRecord
 
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-# gem 'ruby-debug'
-# gem 'ruby-debug19'
-
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri'
-# gem 'aws-s3', :require => 'aws/s3'
+group :assets do
+  gem 'sass-rails', "~> 3.2.3"
+  gem 'coffee-rails', "~> 3.2.1"
+  gem 'uglifier', ">= 1.0.3"
+end
+gem 'jquery-rails'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

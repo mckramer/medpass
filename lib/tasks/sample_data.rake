@@ -10,7 +10,6 @@ namespace :db do
     make_sites
     make_divisions
     # >> Users
-    make_roles
     make_users
     # >> Allergies
     make_allergens
@@ -75,7 +74,6 @@ def make_users
     else
       # Build custom data for provider
       name_suffix    = rand(100).even? ? ["MD", "PhD", "RN"].shuffle!.first : nil
-      role_ids  = random_roles
       
       Provider.create!(
       :type                   => type,
@@ -87,7 +85,7 @@ def make_users
       :name_middle            => name_middle,
       :name_suffix            => name_suffix,
       :language               => language,
-      :role_ids               => [5],
+      :role                   => Provider::AVAILABLE_ROLES.sample,
       :site_id                => site.id,
       :division_id            => division.id
     )
@@ -124,20 +122,6 @@ def make_divisions
     end
   end
   puts "Divisions created."
-end
-
-def make_roles
-  names = [ "Super administrator", "Study administrator", "Site coordinator", "Division coordinator", "Health provider" ]
-  descriptions = [ "Can manage everything", "Can manage the study", "Can manage specific site", "Can manage specific division", "Can only manage their patients" ]
-  (names.length).times do |n|
-    name = names[n]
-    description  = descriptions[n]
-    Role.create!(
-      :name           => name,
-      :description    => description
-    )
-  end
-  puts "Roles created."
 end
 
 def make_allergens
@@ -254,15 +238,4 @@ def make_prescriptions
     end
   end
   puts "Prescriptions created."
-end
-
-private
-def random_roles
-  role_ids = Array.new
-  Role.all do |role|
-    if role.name.lowercase == "health provider"
-      role_ids[] = role.id
-      return role_ids
-    end
-  end
 end
